@@ -19,12 +19,12 @@ function registerUser() {
         if (err) {
             alert(err.message || JSON.stringify(err));
             if (err.code === 'UsernameExistsException' {
-                window.location.href = 'login.html';
+                window.location.href = 'signin.html';
             }
             return;
         }
         alert('Registration successful! Please login.');
-        window.location.href = 'login.html';
+        window.location.href = 'signin.html';
     });
 }
  
@@ -65,7 +65,7 @@ function checkSession() {
         cognitoUser.getSession((err, session) => {
             if (err || !session.isValid()) {
                 console.log('Session invalid, redirecting to login...');
-                window.location.href = 'login.html';
+                window.location.href = 'signin.html';
             } else {
                 console.log('User is logged in, redirecting to ride page...');
                 window.location.href = 'ride.html';
@@ -73,7 +73,7 @@ function checkSession() {
         });
     } else {
         console.log('No user found, redirecting to login...');
-        window.location.href = 'login.html';
+        window.location.href = 'signin.html';
     }
 }
  
@@ -84,6 +84,6 @@ function logoutUser() {
         cognitoUser.signOut();
         localStorage.removeItem('cognitoToken');
         alert('Logged out successfully!');
-        window.location.href = 'login.html';
+        window.location.href = 'signin.html';
     }
 }
